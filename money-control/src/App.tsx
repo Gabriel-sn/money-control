@@ -1,8 +1,9 @@
-import style from 'styled-components';
+import { GlobalStyle } from "./styles/global";
 
 export function App() {
   return (
     <div className="App">
+      <GlobalStyle />
       <h1>Teste</h1>
     </div>
   );
