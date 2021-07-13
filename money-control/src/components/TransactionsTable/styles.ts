@@ -17,7 +17,6 @@ export const Container = styled.div`
         td{
             padding: 1rem 2rem;
             border: 0;
-            border-radius: .25rem;
             background: var(--shape);
             color: var(--textos);
 
@@ -33,5 +32,10 @@ export const Container = styled.div`
                 color: var(--red);
             }
         }
+
+        td:first-child { border-top-left-radius: .25rem; }
+        td:last-child { border-top-right-radius: .25rem; }
+        td:first-child { border-bottom-left-radius: .25rem; }
+        td:last-child { border-bottom-right-radius: .25rem; }
     }
 `
