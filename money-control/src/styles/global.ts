@@ -75,4 +75,18 @@ export const GlobalStyle = createGlobalStyle`
         position: relative;
         border-radius: .25rem;
     }
+
+    .modal-close-btn{
+        position: absolute;
+        border: none;
+        background: none;
+        top: 1.5rem;
+        right: 1.5rem;
+
+        transition: filter .2s;
+
+        &:hover{
+            filter: brightness(.7);
+        }
+    }
 `
