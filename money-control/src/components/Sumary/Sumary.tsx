@@ -2,8 +2,12 @@ import {Container} from './styles';
 import incomeSVG from '../../assets/income.svg';
 import outcomeSVG from '../../assets/outcome.svg';
 import totalSVG from '../../assets/total.svg';
+import { useContext } from 'react';
+import { TransactionsContext } from '../../TransactionsContext';
 
 export function Sumary() {
+
+    const {transactions} = useContext(TransactionsContext);
     return (
         <Container>
             <div>
