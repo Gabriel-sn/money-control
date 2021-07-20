@@ -16,18 +16,28 @@ export function NewTransactionModal({isOpen, onRequestClose} : NewTransactionMod
     const [amount, setAmount] = useState(0);
     const [type, setType] = useState('deposit');
     const [category, setCategory] = useState('');
+    const [createdAt, setCreatedAt] = useState('');
 
     const {createTransaction} = useContext(TransactionsContext)
 
-    function handleCreateNewTransaction(event: FormEvent){
+    async function handleCreateNewTransaction(event: FormEvent){
         event.preventDefault();
-
-        createTransaction({
+        const currentDate = new Date();
+        await createTransaction({
             title,
             amount,
             category,
-            type
-        })
+            type,
+            createdAt: new Intl.DateTimeFormat('pt-BR').format(currentDate) ,
+        });
+
+        setTitle('');
+        setAmount(0);
+        setType('deposit');
+        setCategory('');
+        setCreatedAt('')
+
+        onRequestClose();
     }
 
     return (

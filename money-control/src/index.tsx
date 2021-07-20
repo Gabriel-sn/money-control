@@ -18,7 +18,7 @@ new Server ({
           type: 'deposit',
           amount: 2500,
           category: 'Freelance',
-          createdAt: new Date()
+          createdAt: new Intl.DateTimeFormat('pt-BR').format(new Date())
         },
 
         {
@@ -27,7 +27,7 @@ new Server ({
           type: 'withdraw',
           amount: 250,
           category: 'Equipamento',
-          createdAt: new Date()
+          createdAt: new Intl.DateTimeFormat('pt-BR').format(new Date())
         }
       ]
     })
