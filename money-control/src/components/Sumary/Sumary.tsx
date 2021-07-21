@@ -8,6 +8,27 @@ import { TransactionsContext } from '../../TransactionsContext';
 export function Sumary() {
 
     const {transactions} = useContext(TransactionsContext);
+
+    const summary = transactions.reduce((acc, transaction) => {
+        
+        if(transaction.type === 'deposit'){
+            acc.deposits += transaction.amount;
+            acc.total += transaction.amount
+        }
+
+        if(transaction.type === 'withdraw'){
+            acc.withdraws += transaction.amount;
+            acc.total -= transaction.amount
+        }
+
+        return acc
+    }, {
+        deposits: 0,
+        withdraws: 0,
+        total: 0
+    })
+
+
     return (
         <Container>
             <div>
@@ -16,7 +37,12 @@ export function Sumary() {
                     <img src={incomeSVG} alt="Entrada" />
                 </header>
 
-                <strong>R$ 1000,00</strong>
+                <strong>
+                    {new Intl.NumberFormat('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                    }).format(summary.deposits)}
+                </strong>
             </div>
 
             <div>
@@ -25,7 +51,12 @@ export function Sumary() {
                     <img src={outcomeSVG} alt="Saída" />
                 </header>
 
-                <strong>R$ 800,00</strong>
+                <strong>
+                    -{new Intl.NumberFormat('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                    }).format(summary.withdraws)}
+                </strong>
             </div>
 
             <div className="card-total">
@@ -34,7 +65,12 @@ export function Sumary() {
                     <img src={totalSVG} alt="Total" />
                 </header>
 
-                <strong>R$ 200,00</strong>
+                <strong>
+                    {new Intl.NumberFormat('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                    }).format(summary.total)}
+                </strong>
             </div>
         </Container>
     )
