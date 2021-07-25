@@ -2,7 +2,6 @@
 - Styled Components
 - MirageJS
 - Axios
-- Axios
 
 # Como Executar
 ### Para executar a aplicação é necessário que você tenha instalado em sua máquina as seguintes ferramentas:
